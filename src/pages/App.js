@@ -64,7 +64,7 @@ export default function App() {
                   </span>{' '}
                   over{' '}
                   <Link
-                    href="https://zkpay.link/aNeouH"
+                    href="https://zkpay.link/sXcPqD"
                     target="_blank"
                     className="underline"
                   >
@@ -74,7 +74,7 @@ export default function App() {
                 </div>
                 */}
                 <Link
-                  href="https://zkpay.link/sBDqL7"
+                  href="https://zkpay.link/sXcPqD"
                   target="_blank"
                   className="flex items-center"
                 >
