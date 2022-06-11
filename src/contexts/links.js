@@ -1,6 +1,6 @@
 import React from 'react';
 import _memoize from 'lodash/memoize';
-import ipfs from 'utils/ipfs';
+import * as ipfs from 'utils/ipfs';
 import { nanoid } from 'utils/misc';
 import * as registry from 'utils/registry';
 
@@ -24,7 +24,7 @@ export function LinksProvider({ children }) {
   async function getFromIpfs(id) {
     console.log('get ipfs', id);
     const ipfsId = await registry.get(id);
-    const link = JSON.parse(await ipfs.cat(ipfsId));
+    const link = JSON.parse(await ipfs.read.cat(ipfsId));
     link.id = id;
     link.ipfsId = ipfsId;
     return link;
@@ -34,9 +34,9 @@ export function LinksProvider({ children }) {
     setIsCreating(true);
 
     if (props.image) {
-      props.image = await ipfs.add(props.image);
+      props.image = await ipfs.write.add(props.image);
     }
-    const ipfsId = await ipfs.add(JSON.stringify(props));
+    const ipfsId = await ipfs.write.add(JSON.stringify(props));
     const id = nanoid();
     console.log('create id(%s) ipfs(%s)', id, ipfsId);
     await registry.put(id, ipfsId);
@@ -48,7 +48,7 @@ export function LinksProvider({ children }) {
   async function update(id, props) {
     setIsUpdating(true);
 
-    const ipfsId = await ipfs.add(props);
+    const ipfsId = await ipfs.write.add(props);
     await registry.put(id, ipfsId);
     setLinkIds(linkIds.slice());
 

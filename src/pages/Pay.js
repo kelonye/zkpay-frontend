@@ -17,7 +17,7 @@ import LightSwitch from 'components/LightSwitch';
 import { useLinks } from 'contexts/links';
 import sl, { slPrompt } from 'utils/sl';
 import xhr from 'utils/xhr';
-import ipfs from 'utils/ipfs';
+import * as ipfs from 'utils/ipfs';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -83,7 +83,7 @@ export default function Component({
       setUSDAmount(info.usdAmount);
       if (info.image) {
         const el = imageElRef.current;
-        el.src = await ipfs.cat(info.image);
+        el.src = await ipfs.read.cat(info.image);
         el.classList.remove('hidden');
       }
     } catch {

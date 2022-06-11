@@ -41,4 +41,4 @@ Todo.
 
 ### Donate ❤️
 
-This project has its own donation link at https://zkpay.link/sBDqL7
+This project has its own donation link at https://zkpay.link/sXcPqD
